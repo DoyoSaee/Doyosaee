@@ -42,6 +42,10 @@
 
 ![Profile Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doyosaee&theme=github_dark)
 
+![Repos per Language](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Doyosaee&theme=github_dark)
+
+![Stats](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=Doyosaee&theme=github_dark)
+
 
  </div>
     
