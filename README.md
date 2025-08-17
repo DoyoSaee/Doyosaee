@@ -39,6 +39,5 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 
 🏅 Stats </h2> 
         <div style="text-align: left;"> 
-[![GitHub Streak](https://streak-stats.demolab.com?user=Doyosaee&theme=dark&locale=ko&exclude_days=Mon%2CTue%2CWed%2CThu%2CFri)](https://git.io/streak-stats)
-    </div>
+[![minseon yu's GitHub stats](https://github-readme-stats.vercel.app/api?username=DoyoSaee)](https://github.com/DoyoSaee/github-readme-stats)    </div>
     
