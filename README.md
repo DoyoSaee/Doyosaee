@@ -40,7 +40,7 @@
 🏅 Stats </h2> 
         <div style="text-align: left;"> 
 
-![Profile Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doyosaee&theme=github_light)
+![Profile Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doyosaee&theme=solarized)
 
  
 
