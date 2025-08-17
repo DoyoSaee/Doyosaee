@@ -39,7 +39,7 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 
 🏅 Stats </h2> 
         <div style="text-align: left;"> 
- [![GitHub Streak](https://streak-stats.demolab.com?user=Doyosaee&theme=dark&locale=ko&exclude_days=Mon%2CTue%2CWed%2CThu%2CFri)](https://git.io/streak-stats)
+<a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=Doyosaee&theme=dark&locale=ko&exclude_days=Mon%2CTue%2CWed%2CThu%2CFri" alt="GitHub Streak" /></a>
         </div> 
     </div>
     
