@@ -39,6 +39,19 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 
 🏅 Stats </h2> 
         <div style="text-align: left;"> 
+
+<picture>
+  <source
+    srcset="https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true&theme=dark"
+    media="(prefers-color-scheme: dark)"
+  />
+  <source
+    srcset="https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true"
+    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+  />
+  <img src="https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true" />
+</picture>
+
 ![Doyosaee's GitHub stats](https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true&theme=buefy)
  </div>
     
