@@ -40,14 +40,8 @@
 🏅 Stats </h2> 
         <div style="text-align: left;"> 
 
-<picture>
-  <source
-    srcset="[https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true&count_private=true](https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true&include_all_commits=true
-)"
-    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-  />
-  <img src="https://github-readme-stats.vercel.app/api?username=Doyosaee&show_icons=true" />
-</picture>
+![Profile Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doyosaee&theme=github_dark)
+
 
  </div>
     
