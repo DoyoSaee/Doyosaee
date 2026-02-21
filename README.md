@@ -7,17 +7,12 @@
     </div>
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 📂 Private Repo README </h2>
+    </div>
+
 <!-- PROJECTS:START -->
-<table><tr><td>
-<h3>DoyoWorld Monorepo</h3>
-<p>풀사이클 엔지니어링을 지향하는 모노레포입니다. 홈랩 인프라(K3s) 구축부터 웹/모바일 앱 배포까지, 서비스의 전체 라이프사이클을 담고 있습니다.</p>
-</td></tr></table>
-<br>
-<p align="right"><sub>🔄 프라이빗 레포에서 GitHub Actions로 자동 동기화됨</sub></p>
 <!-- PROJECTS:END -->
 
-    </div>
-    <div style="text-align: left;">
+<div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2> <br>
     <div style="margin: ; text-align: left;" "text-align: left;">
           <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white">
