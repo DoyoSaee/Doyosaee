@@ -9,7 +9,7 @@
 ### GitHub Personal Access Token (PAT) 생성
 1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens**
 2. **Token name**: `readme-sync`
-3. **Repository access** → Only select repositories → 프로필 레포(`Doyosaee/Doyosaee`) + 동기화할 프라이빗 레포들 선택
+3. **Repository access** → Only select repositories → 프로필 레포(`DoyoSaee/Doyosaee`) + 동기화할 프라이빗 레포들 선택
 4. **Permissions**:
    - 프로필 레포: `Contents: Read and Write`
    - 프라이빗 레포들: `Contents: Read`
@@ -28,7 +28,7 @@
 아래 내용을 Claude Code에게 전달하세요:
 
 ```
-이 레포의 README.md가 변경될 때마다 내 GitHub 프로필 레포(Doyosaee/Doyosaee)의
+이 레포의 README.md가 변경될 때마다 내 GitHub 프로필 레포(DoyoSaee/Doyosaee)의
 projects/ 폴더에 자동으로 동기화하는 GitHub Actions 워크플로우를 만들어줘.
 
 아래 내용으로 .github/workflows/sync-readme.yml 파일을 생성해줘:
@@ -51,7 +51,7 @@ jobs:
       - name: Checkout profile repo
         uses: actions/checkout@v4
         with:
-          repository: Doyosaee/Doyosaee
+          repository: DoyoSaee/Doyosaee
           token: ${{ secrets.PROFILE_README_TOKEN }}
           path: profile-repo
 
@@ -81,7 +81,7 @@ jobs:
 
 ```
 이 터보레포의 apps/과 packages/ 하위 README.md가 변경될 때마다
-내 GitHub 프로필 레포(Doyosaee/Doyosaee)의 projects/ 폴더에
+내 GitHub 프로필 레포(DoyoSaee/Doyosaee)의 projects/ 폴더에
 각각 자동으로 동기화하는 GitHub Actions 워크플로우를 만들어줘.
 
 아래 내용으로 .github/workflows/sync-readme.yml 파일을 생성해줘:
@@ -105,7 +105,7 @@ jobs:
       - name: Checkout profile repo
         uses: actions/checkout@v4
         with:
-          repository: Doyosaee/Doyosaee
+          repository: DoyoSaee/Doyosaee
           token: ${{ secrets.PROFILE_README_TOKEN }}
           path: profile-repo
 
