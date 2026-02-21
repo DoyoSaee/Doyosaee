@@ -59,6 +59,7 @@ def main():
             cards.append(card)
 
         project_section = "\n<br>\n".join(cards)
+        project_section += '\n<br>\n<p align="right"><sub>🔄 Auto-synced from private repos via GitHub Actions</sub></p>'
 
     with open(README_PATH, "r", encoding="utf-8") as f:
         readme = f.read()
