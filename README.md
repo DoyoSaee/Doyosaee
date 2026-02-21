@@ -11,7 +11,7 @@
 
 <!-- PROJECTS:START -->
 <details>
-<summary><b>DoyoWorld Monorepo</b></summary>
+<summary><h3>📁 DoyoWorld Monorepo</h3></summary>
 
 # DoyoWorld Monorepo
 
@@ -295,7 +295,7 @@ pnpm build
 </details>
 
 <details>
-<summary><b>Portfolio</b></summary>
+<summary><h3>📁 Portfolio</h3></summary>
 
 # Portfolio
 

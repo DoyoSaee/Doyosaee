@@ -33,7 +33,7 @@ def main():
             with open(filepath, "r", encoding="utf-8") as fh:
                 content = fh.read().strip()
 
-            section = f'<details>\n<summary><b>{title}</b></summary>\n\n{content}\n\n</details>'
+            section = f'<details>\n<summary><h3>📁 {title}</h3></summary>\n\n{content}\n\n</details>'
             sections.append(section)
 
         project_section = "\n\n".join(sections)
