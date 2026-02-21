@@ -9,9 +9,8 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 📂 Private Repo README </h2>
 <!-- PROJECTS:START -->
 <table><tr><td>
-<h3>Portfolio</h3>
-<p>Next.js 기반 이력서 & 포트폴리오 웹사이트입니다.</p>
-<a href="https://www.doyosae.com">https://www.doyosae.com</a>
+<h3>DoyoWorld Monorepo</h3>
+<p>풀사이클 엔지니어링을 지향하는 모노레포입니다. 홈랩 인프라(K3s) 구축부터 웹/모바일 앱 배포까지, 서비스의 전체 라이프사이클을 담고 있습니다.</p>
 </td></tr></table>
 <br>
 <p align="right"><sub>🔄 프라이빗 레포에서 GitHub Actions로 자동 동기화됨</sub></p>
