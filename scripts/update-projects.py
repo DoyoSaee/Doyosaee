@@ -26,14 +26,13 @@ def main():
     if not project_files:
         project_section = ""
     else:
-        lines = ["<br>", "<ul>"]
+        sections = []
         for f in project_files:
             filepath = os.path.join(PROJECTS_DIR, f)
-            title = get_title(filepath)
-            lines.append(f'  <li><a href="projects/{f}">{title}</a></li>')
-        lines.append("</ul>")
-        lines.append("<br>")
-        project_section = "\n".join(lines)
+            with open(filepath, "r", encoding="utf-8") as fh:
+                content = fh.read().strip()
+            sections.append(content)
+        project_section = "\n\n---\n\n".join(sections)
 
     with open(README_PATH, "r", encoding="utf-8") as f:
         readme = f.read()
