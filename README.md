@@ -8,11 +8,13 @@
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 📂 Projects </h2>
 <!-- PROJECTS:START -->
-# Portfolio
-
-Next.js 기반 이력서 웹사이트입니다.
-
-🔗 [www.doyosae.com](https://www.doyosae.com)
+<table><tr><td>
+<h3>Portfolio</h3>
+<p>Next.js 기반 이력서 & 포트폴리오 웹사이트입니다.</p>
+<a href="https://www.doyosae.com">https://www.doyosae.com</a>
+</td></tr></table>
+<br>
+<p align="right"><sub>🔄 프라이빗 레포에서 GitHub Actions로 자동 동기화됨</sub></p>
 <!-- PROJECTS:END -->
     </div>
     <div style="text-align: left;">
