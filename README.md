@@ -6,6 +6,11 @@
     <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;">  </div> 
     </div>
     <div style="text-align: left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 📂 Projects </h2>
+<!-- PROJECTS:START -->
+<!-- PROJECTS:END -->
+    </div>
+    <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2> <br> 
     <div style="margin: ; text-align: left;" "text-align: left;">
           <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white">
