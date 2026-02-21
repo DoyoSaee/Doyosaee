@@ -8,11 +8,11 @@
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 📂 Projects </h2>
 <!-- PROJECTS:START -->
-<br>
-<ul>
-  <li><a href="projects/portfolio.md">오동효 포트폴리오</a></li>
-</ul>
-<br>
+# Portfolio
+
+Next.js 기반 이력서 웹사이트입니다.
+
+🔗 [www.doyosae.com](https://www.doyosae.com)
 <!-- PROJECTS:END -->
     </div>
     <div style="text-align: left;">
