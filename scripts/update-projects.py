@@ -5,6 +5,16 @@ PROJECTS_DIR = "projects"
 README_PATH = "README.md"
 
 
+def get_title(filepath):
+    """md 파일의 첫 번째 # 제목을 추출"""
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            match = re.match(r"^#\s+(.+)", line.strip())
+            if match:
+                return match.group(1)
+    return os.path.splitext(os.path.basename(filepath))[0]
+
+
 def main():
     if not os.path.isdir(PROJECTS_DIR):
         return
@@ -19,11 +29,14 @@ def main():
         sections = []
         for f in project_files:
             filepath = os.path.join(PROJECTS_DIR, f)
+            title = get_title(filepath)
             with open(filepath, "r", encoding="utf-8") as fh:
                 content = fh.read().strip()
-            sections.append(content)
 
-        project_section = "\n\n---\n\n".join(sections)
+            section = f'<details>\n<summary><b>{title}</b></summary>\n\n{content}\n\n</details>'
+            sections.append(section)
+
+        project_section = "\n\n".join(sections)
         project_section += '\n\n<p align="right"><sub>🔄 프라이빗 레포에서 GitHub Actions로 자동 동기화됨</sub></p>'
 
     with open(README_PATH, "r", encoding="utf-8") as f:
