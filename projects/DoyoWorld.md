@@ -275,4 +275,4 @@ pnpm build
 | Infra | K3s, Docker, Cloudflare Tunnel, GitHub Actions |
 | AI/자동화 | Gemini AI, n8n 워크플로우 |
 | CI/CD | GitHub Actions, Self-hosted Runner, GHCR |
-| Dev Tools | Turborepo, pnpm 9, RustDesk |
+| Dev Tools | Turborepo, pnpm 9, RustDesk, Claude Code |
