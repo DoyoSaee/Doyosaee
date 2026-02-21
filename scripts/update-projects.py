@@ -59,7 +59,7 @@ def main():
             cards.append(card)
 
         project_section = "\n<br>\n".join(cards)
-        project_section += '\n<br>\n<p align="right"><sub>🔄 Auto-synced from private repos via GitHub Actions</sub></p>'
+        project_section += '\n<br>\n<p align="right"><sub>🔄 프라이빗 레포에서 GitHub Actions로 자동 동기화됨</sub></p>'
 
     with open(README_PATH, "r", encoding="utf-8") as f:
         readme = f.read()
