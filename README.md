@@ -10,9 +10,12 @@
     </div>
 
 <!-- PROJECTS:START -->
+<details>
+<summary><b>DoyoWorld Monorepo</b></summary>
+
 # DoyoWorld Monorepo
 
-풀사이클 엔지니어링을 지향하는 모노레포입니다. 홈랩 인프라(K3s) 구축부터 웹/모바일 앱 배포까지, 서비스의 전체 라이프사이클을 담고 있습니다.
+풀사이클 엔지니어링을 지향하는 모노레포입니다. 홈랩 인프라(K3s) 구축부터 웹/모바일 앱 배포까지, 서비스의 전체 라이프사이클을 다루고 있습니다.
 
 **빌드**: Turborepo | **패키지 매니저**: pnpm 9 | **Node**: >= 18
 
@@ -38,7 +41,7 @@
 | [**FirstWing**](./apps/01-FirstWing) | 프로토타입 웹앱 | Next.js 14, React 18, TailwindCSS, ApexCharts |
 
 <p align="center">
-  <img src="./public/img/firstwing.png" alt="FirstWing" width="200">
+  <img src="projects/images/DoyoWorld/firstwing.png" alt="FirstWing" width="200">
 </p>
 
 Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로, TailAdmin 템플릿을 활용한 대시보드 프로토타입입니다.
@@ -50,7 +53,7 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 > n8n + Gemini AI로 RSS 뉴스를 자동 수집/요약하여 모바일에서 제공하는 플랫폼
 
 <p align="center">
-  <img src="./public/img/devpulse.png" alt="DevPulse App" width="50%">
+  <img src="projects/images/DoyoWorld/devpulse.png" alt="DevPulse App" width="50%">
   <br>
   <em>DevPulse 모바일 화면</em>
 </p>
@@ -69,7 +72,7 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 - Web↔Native Bridge 양방향 통신 (햅틱, 푸시 알림)
 
 <p align="center">
-  <img src="./public/img/devpulsen8n.png" alt="n8n Workflow" width="100%">
+  <img src="projects/images/DoyoWorld/devpulsen8n.png" alt="n8n Workflow" width="100%">
   <br>
   <em>n8n 자동화 파이프라인</em>
 </p>
@@ -102,13 +105,13 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 ### 공개 페이지 (비회원)
 
 <p align="center">
-  <img src="./public/img/forthwing/00.비회원 메인화면.png" alt="도요몰 랜딩" width="80%">
+  <img src="projects/images/DoyoWorld/forthwing/00.비회원 메인화면.png" alt="도요몰 랜딩" width="80%">
   <br>
   <em>도요몰 랜딩 — 인기 상품 캐러셀 + 카테고리 바로가기 + 신상품 인피니티 스크롤</em>
 </p>
 
 <p align="center">
-  <img src="./public/img/forthwing/01.비회원 메인에서 권한메뉴접근시.png" alt="로그인 프롬프트" width="80%">
+  <img src="projects/images/DoyoWorld/forthwing/01.비회원 메인에서 권한메뉴접근시.png" alt="로그인 프롬프트" width="80%">
   <br>
   <em>비회원이 보호 메뉴 접근 시 로그인 오버레이 (이메일 + Google OAuth)</em>
 </p>
@@ -116,8 +119,8 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 ### 인증 시스템
 
 <p align="center">
-  <img src="./public/img/forthwing/02.일반로그인화면.png" alt="로그인" width="45%">
-  <img src="./public/img/forthwing/03.일반회원가입.png" alt="회원가입" width="45%">
+  <img src="projects/images/DoyoWorld/forthwing/02.일반로그인화면.png" alt="로그인" width="45%">
+  <img src="projects/images/DoyoWorld/forthwing/03.일반회원가입.png" alt="회원가입" width="45%">
   <br>
   <em>로그인 / 일반 회원가입</em>
 </p>
@@ -125,14 +128,14 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 ### 벤더(사업자) 승인 가입 플로우
 
 <p align="center">
-  <img src="./public/img/forthwing/04-1.사업자회원가입요청.png" alt="사업자 가입 신청" width="45%">
-  <img src="./public/img/forthwing/04-2.사업자회원가입요청 확인.png" alt="사업자 가입 접수" width="45%">
+  <img src="projects/images/DoyoWorld/forthwing/04-1.사업자회원가입요청.png" alt="사업자 가입 신청" width="45%">
+  <img src="projects/images/DoyoWorld/forthwing/04-2.사업자회원가입요청 확인.png" alt="사업자 가입 접수" width="45%">
   <br>
   <em>사업자 가입 신청 → 접수 확인</em>
 </p>
 
 <p align="center">
-  <img src="./public/img/forthwing/05-0.AWS ses 이메일.png" alt="AWS SES 이메일" width="60%">
+  <img src="projects/images/DoyoWorld/forthwing/05-0.AWS ses 이메일.png" alt="AWS SES 이메일" width="60%">
   <br>
   <em>관리자 승인 후 AWS SES로 가입 링크 이메일 발송</em>
 </p>
@@ -140,19 +143,19 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 ### 관리자 패널
 
 <p align="center">
-  <img src="./public/img/forthwing/05-1.관리자 신청관리메뉴.png" alt="관리자 벤더 신청 관리" width="80%">
+  <img src="projects/images/DoyoWorld/forthwing/05-1.관리자 신청관리메뉴.png" alt="관리자 벤더 신청 관리" width="80%">
   <br>
   <em>사업자 가입 신청 관리 — 승인/거절/기한연장/재송신</em>
 </p>
 
 <p align="center">
-  <img src="./public/img/forthwing/06.관리자 카테고리.png" alt="카테고리 관리" width="80%">
+  <img src="projects/images/DoyoWorld/forthwing/06.관리자 카테고리.png" alt="카테고리 관리" width="80%">
   <br>
   <em>카테고리 관리 — 대분류/소분류 트리 구조 CRUD</em>
 </p>
 
 <p align="center">
-  <img src="./public/img/forthwing/08.관리자 메뉴권한관리.png" alt="메뉴 권한 관리" width="80%">
+  <img src="projects/images/DoyoWorld/forthwing/08.관리자 메뉴권한관리.png" alt="메뉴 권한 관리" width="80%">
   <br>
   <em>역할별 메뉴 권한 관리 (관리자/판매자/고객)</em>
 </p>
@@ -160,14 +163,14 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 ### 벤더(판매자) 상품 관리
 
 <p align="center">
-  <img src="./public/img/forthwing/09.기업 상품등록.png" alt="상품 등록" width="45%">
-  <img src="./public/img/forthwing/11.기업 상품수정.png" alt="상품 수정" width="45%">
+  <img src="projects/images/DoyoWorld/forthwing/09.기업 상품등록.png" alt="상품 등록" width="45%">
+  <img src="projects/images/DoyoWorld/forthwing/11.기업 상품수정.png" alt="상품 수정" width="45%">
   <br>
   <em>상품 등록 / 수정 — 카테고리 선택, 할인 설정, MinIO 이미지 업로드</em>
 </p>
 
 <p align="center">
-  <img src="./public/img/forthwing/10.기업 내상품.png" alt="내 상품 목록" width="80%">
+  <img src="projects/images/DoyoWorld/forthwing/10.기업 내상품.png" alt="내 상품 목록" width="80%">
   <br>
   <em>내 상품 목록 — 상태 필터 (판매중/비활성/품절/단종) + 검색</em>
 </p>
@@ -289,13 +292,18 @@ pnpm build
 | CI/CD | GitHub Actions, Self-hosted Runner, GHCR |
 | Dev Tools | Turborepo, pnpm 9, RustDesk, Claude Code |
 
----
+</details>
+
+<details>
+<summary><b>Portfolio</b></summary>
 
 # Portfolio
 
 Next.js 기반 이력서 & 포트폴리오 웹사이트입니다.
 
 🔗 [doyosae.com](https://www.doyosae.com)
+
+</details>
 
 <p align="right"><sub>🔄 프라이빗 레포에서 GitHub Actions로 자동 동기화됨</sub></p>
 <!-- PROJECTS:END -->
