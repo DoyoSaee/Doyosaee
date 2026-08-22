@@ -180,7 +180,7 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 | App | 설명 | 기술 스택 |
 |-----|------|-----------|
 | [**FifthWing**](./apps/05-01-FifthWing) | 프론트엔드 (3D 룸플래너) | Next.js, React 19, React Three Fiber, drei, three.js, Zustand |
-| [**FifthWind**](./apps/05-02-FifthWind) | 백엔드 API (방 저장/공유) | NestJS, Prisma, PostgreSQL |
+| [**FifthWind**](./apps/05-02-FifthWind) | 백엔드 API (방 저장/공유·모델 재호스팅) | NestJS, code-first GraphQL, Prisma, PostgreSQL, MinIO |
 
 <p align="center">
   <img src="projects/images/DoyoWorld/fifthwing/dungji1.png" alt="둥지 랜딩" width="80%">
@@ -189,16 +189,16 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 </p>
 
 <p align="center">
-  <img src="projects/images/DoyoWorld/fifthwing/dungji2.png" alt="평면도 에디터" width="80%">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji2.png" alt="방 조립 에디터" width="80%">
   <br>
-  <em>평면도 에디터 — 방을 그리면 벽으로 세워지고, 실사용 면적·높이가 실시간 계산됨</em>
+  <em>방 조립 에디터 — 사각형 방 + 자유 선을 혼용해 하나의 집으로 결합(면적·높이 실시간)</em>
 </p>
 
 <p align="center">
-  <img src="projects/images/DoyoWorld/fifthwing/dungji3.png" alt="가구 카탈로그 배치" width="45%">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji3.png" alt="가구 찾기(Poly Pizza 공유 카탈로그)" width="45%">
   <img src="projects/images/DoyoWorld/fifthwing/dungji4.png" alt="탑다운 배치 뷰" width="45%">
   <br>
-  <em>가구 카탈로그에서 배치 / 탑다운 뷰</em>
+  <em>가구 찾기(Poly Pizza 공유 카탈로그) / 탑다운 배치 뷰</em>
 </p>
 
 <p align="center">
@@ -208,11 +208,13 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
   <em>방 내부 3D 편집 / 저장된 방 갤러리</em>
 </p>
 
-**핵심 기능**:
-- 평면도 드래그 → 벽 압출로 3D 집 생성, 실사용 면적·높이 실시간 계산
-- three.js 상호작용 직접 구현: 바닥 레이캐스트 배치 · AABB 충돌 판정 · 그리드 스냅 · 가구 방 안 클램핑
-- InstancedMesh 렌더링 · 리소스 dispose로 성능·메모리 관리
-- 방 저장 및 공유 링크(`/s/slug`), 핵심 로직 TDD로 테스트 작성
+**핵심 기능 / 기술 하이라이트** — 상세: [케이스 스터디](./docs/dungji-case-study.md)
+- **방 조립 에디터** — 사각형 방과 자유 선을 **혼용**해 하나의 집으로 결합(polygon-clipping 정확 합집합, 대각선 보존). 평면도에서 선 그어 **벽/칸막이** 세우기 + 벽·바닥 **재질(색)**.
+- **폴리곤 방 클램프 알고리즘**(`clampFootprint`, 직접 구현) — 선분 거리 + 폴리곤 와인딩 기반 안쪽 법선 OBB 클램프로 **오목 방에서도** 가구가 벽을 안 뚫고 딱 붙음.
+- **공유 glTF 카탈로그** — Poly Pizza 검색을 백엔드로 프록시(키 은닉)하고, 담은 모델의 glb·썸네일을 자체 **MinIO에 재호스팅 + DB 등록** → 모든 사용자가 공유, 외부 API 사용 최소화.
+- **3D 상호작용** — 이벤트 레이 배치·드래그, 비례 리사이즈·자유 배치·고도(공중/매립), drei `<Html>` 플로팅 인스펙터, **모바일 터치(포인터 이벤트)** 지원.
+- **로그인리스 소유권** — editToken(sha256 해시·timing-safe)으로 회원가입 없이 저장 + 공유 링크(`/s/slug`, 편집/읽기전용 분기). 핵심 로직 TDD.
+- **풀스택·셀프호스팅** — NestJS code-first GraphQL + Prisma + PostgreSQL + MinIO, 홈랩 k3s + Cloudflare 터널 + GitHub Actions CI/CD.
 
 ---
 
