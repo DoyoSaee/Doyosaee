@@ -29,6 +29,7 @@
 | 02 | [**DevPulse**](#02-devpulse--ai-기술-뉴스-플랫폼) | AI 기반 기술 뉴스 요약 플랫폼 (Web + API + Mobile) | 운영 중 |
 | 03 | [**ThirdWing**](#03-thirdwing--판금-업체-mvp) | 레이저 판금 업체 생산관리 MVP (Web + API) | 실험 |
 | 04 | [**ForthWing**](#04-forthwing--멀티-벤더-이커머스) | 멀티 벤더 이커머스 마켓플레이스 (Web + API + Mobile) | 개발 중 |
+| 05 | [**FifthWing**](#05-fifthwing--웹-3d-인테리어-룸플래너-둥지) | 웹 3D 인테리어 룸플래너 "둥지" (Web + API) | 운영 중 |
 
 ---
 
@@ -187,6 +188,49 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 
 ---
 
+## 05. FifthWing — 웹 3D 인테리어 룸플래너 (둥지)
+
+> 브라우저에서 방을 직접 그려 3D 집으로 세우고 가구를 배치하는 룸플래너 · 🔗 [dungji.doyosae.com](https://dungji.doyosae.com)
+
+| App | 설명 | 기술 스택 |
+|-----|------|-----------|
+| [**FifthWing**](./apps/05-01-FifthWing) | 프론트엔드 (3D 룸플래너) | Next.js, React 19, React Three Fiber, drei, three.js, Zustand |
+| [**FifthWind**](./apps/05-02-FifthWind) | 백엔드 API (방 저장/공유) | NestJS, Prisma, PostgreSQL |
+
+<p align="center">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji1.png" alt="둥지 랜딩" width="80%">
+  <br>
+  <em>둥지 — 방을 3D로 꾸미는 룸플래너 랜딩</em>
+</p>
+
+<p align="center">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji2.png" alt="평면도 에디터" width="80%">
+  <br>
+  <em>평면도 에디터 — 방을 그리면 벽으로 세워지고, 실사용 면적·높이가 실시간 계산됨</em>
+</p>
+
+<p align="center">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji3.png" alt="가구 카탈로그 배치" width="45%">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji4.png" alt="탑다운 배치 뷰" width="45%">
+  <br>
+  <em>가구 카탈로그에서 배치 / 탑다운 뷰</em>
+</p>
+
+<p align="center">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji5.png" alt="방 내부 3D 편집" width="45%">
+  <img src="projects/images/DoyoWorld/fifthwing/dungji6.png" alt="저장된 방 갤러리" width="45%">
+  <br>
+  <em>방 내부 3D 편집 / 저장된 방 갤러리</em>
+</p>
+
+**핵심 기능**:
+- 평면도 드래그 → 벽 압출로 3D 집 생성, 실사용 면적·높이 실시간 계산
+- three.js 상호작용 직접 구현: 바닥 레이캐스트 배치 · AABB 충돌 판정 · 그리드 스냅 · 가구 방 안 클램핑
+- InstancedMesh 렌더링 · 리소스 dispose로 성능·메모리 관리
+- 방 저장 및 공유 링크(`/s/slug`), 핵심 로직 TDD로 테스트 작성
+
+---
+
 ## Shared Packages
 
 | 패키지 | 설명 |
@@ -216,6 +260,7 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 | FirstWing | `firstwing.doyosae.com` | 프로토타입 (Next.js) |
 | DevPulse Web | `devpulse.doyosae.com` | 뉴스 웹앱 (Next.js PWA) |
 | DevPulse API | `api-devpulse.doyosae.com` | 뉴스 API (NestJS GraphQL) |
+| 둥지 (FifthWing) | `dungji.doyosae.com` | 웹 3D 인테리어 룸플래너 (React Three Fiber) |
 | MinIO S3 | `s3.doyosae.com` | 오브젝트 스토리지 |
 | MinIO Console | `s3-admin.doyosae.com` | 스토리지 관리 UI |
 | n8n | `n8n.doyosae.com` | 자동화 워크플로우 |
@@ -245,7 +290,9 @@ DoyoWorld/
 │   ├── 03-02-ThirdWind/       # 대시보드 API (NestJS + GraphQL)
 │   ├── 04-01-ForthWing/       # 이커머스 Web (Next.js 16 + TailAdmin)
 │   ├── 04-02-ForthWind/       # 이커머스 API (NestJS + REST + Prisma)
-│   └── 04-03-ForthWave/       # 이커머스 Mobile (Expo)
+│   ├── 04-03-ForthWave/       # 이커머스 Mobile (Expo)
+│   ├── 05-01-FifthWing/       # 3D 룸플래너 "둥지" Web (Next.js + React Three Fiber)
+│   └── 05-02-FifthWind/       # 3D 룸플래너 API (NestJS + Prisma)
 ├── packages/
 │   ├── eslint-config/         # 공유 ESLint 설정
 │   ├── typescript-config/     # 공유 TypeScript 설정
@@ -269,6 +316,8 @@ pnpm --filter second-wind dev    # 02 DevPulse API
 pnpm --filter third-wing dev     # 03 ThirdWing
 pnpm --filter forth-wing dev     # 04 ForthWing (이커머스)
 pnpm --filter forth-wind dev     # 04 ForthWind (이커머스 API)
+pnpm --filter fifth-wing dev     # 05 FifthWing (둥지 3D 룸플래너)
+pnpm --filter fifth-wind dev     # 05 FifthWind (둥지 API)
 
 # 전체 빌드
 pnpm build
@@ -281,6 +330,7 @@ pnpm build
 | 영역 | 기술 |
 |------|------|
 | Frontend | Next.js 14~16, React 18~19, TailwindCSS, Shadcn UI, Radix UI |
+| 3D | React Three Fiber, drei, three.js |
 | State | Zustand, React Query (TanStack), Apollo Client |
 | Backend | NestJS 11, GraphQL (Apollo Server), REST, Prisma 5 |
 | Auth | NextAuth v5, JWT, Passport.js, AWS SES |
