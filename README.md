@@ -272,15 +272,15 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 | DevPulse Web | `devpulse.doyosae.com` | 뉴스 웹앱 (Next.js PWA) |
 | DevPulse API | `api-devpulse.doyosae.com` | 뉴스 API (NestJS GraphQL) |
 | 둥지 (FifthWing) | `dungji.doyosae.com` | 웹 3D 인테리어 룸플래너 (React Three Fiber) |
-| MinIO S3 | `s3.doyosae.com` | 오브젝트 스토리지 |
-| MinIO Console | `s3-admin.doyosae.com` | 스토리지 관리 UI |
-| n8n | `n8n.doyosae.com` | 자동화 워크플로우 |
-| Portainer | `portainer.doyosae.com` | 컨테이너 관리 |
+| MinIO S3 | — (내부) | 오브젝트 스토리지 |
+| MinIO Console | — (내부) | 스토리지 관리 UI |
+| n8n | — (내부) | 자동화 워크플로우 |
+| Portainer | — (내부) | 컨테이너 관리 |
 | PostgreSQL | — (내부) | 메인 데이터베이스 |
 | Redis | — (내부) | 캐시 / 큐 |
 | MongoDB | — (내부) | 문서 DB |
-| DrawDB | `drawdb.doyosae.com` | DB 스키마 설계 도구 |
-| Draw.io | `drawio.doyosae.com` | 다이어그램 도구 |
+| DrawDB | — (내부) | DB 스키마 설계 도구 |
+| Draw.io | — (내부) | 다이어그램 도구 |
 
 **네트워크**: Cloudflare Tunnel (포트포워딩 없이 HTTPS 외부 접속)
 **도메인**: `doyosae.com` (가비아 구매 → Cloudflare 이관)
