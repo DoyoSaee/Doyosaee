@@ -6,12 +6,13 @@
       <p>
         회사 밖에서도 아이디어를 끝까지 배포합니다.<br/>
         직접 구축한 <b>K3s 홈랩</b> 위에 사이드 프로젝트를 올려 운영하고,<br/>
-        최근에는 <b>멀티에이전트 오케스트레이터를 self-host</b>해 콘텐츠 제작을 자동화하며 AI를 개발·운영에 붙이고 있습니다.
+        최근에는 <b>ESP32-CAM + 집 GPU의 로컬 비전 모델</b>로 집중 트래커를 만들어 운영하며, 모델 선택부터 보정까지 <b>직접 라벨한 데이터로 측정</b>해 결정합니다.
       </p>
       <p>
         🌐 <a href="https://www.doyosae.com"><b>포트폴리오</b></a> &nbsp;·&nbsp;
         🪑 <a href="https://dungji.doyosae.com"><b>둥지</b> — 웹 3D 룸플래너</a> &nbsp;·&nbsp;
-        📰 <a href="https://devpulse.doyosae.com"><b>DevPulse</b> — AI 뉴스</a>
+        📰 <a href="https://devpulse.doyosae.com"><b>DevPulse</b> — AI 뉴스</a> &nbsp;·&nbsp;
+        💻 <a href="https://github.com/DoyoSaee/dungji-3d-planner"><b>둥지 소스</b></a>
       </p>
     </div>
     <div style="text-align: left;">
@@ -563,6 +564,6 @@ Next.js 기반 이력서 & 포트폴리오 웹사이트입니다.
 🏅 Stats </h2>
 <div style="text-align: left;">
 
-![Profile Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Doyosaee&theme=default)
+![Profile Details](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=DoyoSaee&theme=default)
 
  </div>
