@@ -29,6 +29,8 @@
 
 **빌드**: Turborepo | **패키지 매니저**: pnpm 9 | **Node**: >= 18
 
+**네이밍**: `세대번호-역할` — **Wing** = 프론트엔드, **Wind** = 백엔드 API, **Wave** = 모바일. 06세대는 역할명(GpuStation / FocusVision)을 그대로 씀. 06-03은 pnpm 워크스페이스 밖의 Python(uv) 앱.
+
 ---
 
 ## Projects Overview
@@ -40,6 +42,7 @@
 | 03 | [**ThirdWing**](#03-thirdwing--판금-업체-mvp) | 레이저 판금 업체 생산관리 MVP (Web + API) | 실험 |
 | 04 | [**ForthWing**](#04-forthwing--멀티-벤더-이커머스) | 멀티 벤더 이커머스 마켓플레이스 (Web + API + Mobile) | 개발 중 |
 | 05 | [**FifthWing**](#05-fifthwing--웹-3d-인테리어-룸플래너-둥지) | 웹 3D 인테리어 룸플래너 "둥지" (Web + API) | 운영 중 |
+| 06 | [**GpuStation · 집중 트래커**](#06-gpustation--집중-트래커) | 원격 GPU PC 제어·모니터링 대시보드 + ESP32-CAM·로컬 VLM 집중 모니터 (Web + API + Python) | 운영 중 |
 
 ---
 
@@ -78,7 +81,6 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 **핵심 기능**:
 - n8n 워크플로우: RSS 수집 → 중복 필터 → 본문 추출 → Gemini AI 3줄 요약 → DB 저장
 - Mobile-First PWA + 무한 스크롤 뉴스 피드
-- Redis 캐싱으로 API 응답 최적화
 - Expo + WebView 하이브리드 앱 (Play Store 배포 완료)
 - Web↔Native Bridge 양방향 통신 (햅틱, 푸시 알림)
 
@@ -243,6 +245,39 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 
 ---
 
+## 06. GpuStation · 집중 트래커
+
+> 원격지 GPU PC(RTX 3060)를 전원(ESP32 릴레이·MQTT)부터 서비스·지표까지 한 화면에서 다루는 대시보드, 그 위에 올린 **ESP32-CAM + 로컬 비전 모델(Ollama Qwen2.5-VL 3B)** 집중 모니터. 대시보드 `gpu.doyosae.com`(Cloudflare Access 뒤) · 상세: [케이스 스터디](./docs/focus-tracker-case-study.md) · [측정 기록](./docs/focus-tracker-eval.md)
+
+| App | 설명 | 기술 스택 |
+|-----|------|-----------|
+| [**GpuStationFrontend**](./apps/06-01-GpuStationFrontend) | 대시보드 (상태·전원·종료 예약·24h 지표·집중 시계판·카메라 관리) | Next.js, React, SVG/Canvas |
+| [**GpuStationBackend**](./apps/06-02-GpuStationBackend) | 중계 API (MQTT ↔ 익산 에이전트·Tasmota 릴레이, 06-03 프록시) | NestJS, MQTT(Mosquitto), WebSocket |
+| [**FocusVisionBackend**](./apps/06-03-FocusVisionBackend) | 카메라 수신·추론 워커·저장 + ESP32-CAM 펌웨어 | Python(uv), LangGraph, Ollama, SQLite, Arduino C++ |
+
+<p align="center">
+  <img src="projects/images/DoyoWorld/focus/01-gpustation-main-metrics.png" alt="GpuStation 메인" width="45%">
+  <img src="projects/images/DoyoWorld/focus/02-dial-log-open.png" alt="집중 시계판" width="45%">
+  <br>
+  <em>GpuStation 메인(상태·전원·종료 예약·최근 24시간 GPU 지표) / 집중 시계판(오전·오후, 지금 상태, 합계, 확인 기록)</em>
+</p>
+
+<p align="center">
+  <img src="projects/images/DoyoWorld/focus/03-camera-page-live.png" alt="카메라 관리" width="45%">
+  <img src="projects/images/DoyoWorld/focus/04-esp32-cam-hardware.jpg" alt="ESP32-CAM" width="45%">
+  <br>
+  <em>카메라 관리(1초 실화면·wifi 원격 등록·명령) / ESP32-CAM 실물</em>
+</p>
+
+**핵심 기능 / 기술 하이라이트**
+- **측정으로 모델 결정** — 직접 라벨한 99장으로 클라우드(Claude Haiku)와 로컬(Qwen2.5-VL 3B/7B)·프롬프트 3종을 정밀도·재현율·지연·비용 한 표로 비교. 3B + 짧은 프롬프트가 로컬 중 최고(정밀도 1.0·재현율 0.86·2.2초/장·VRAM 4GB), 사진 반출 없음·비용 0을 이유로 로컬 선택.
+- **운영 데이터로 찾은 결함과 보정** — 설명문엔 "폰 사용"이라 쓰면서 불리언은 false인 프레임 20% → 설명문 규칙으로 되살려 재현율 0.86 → 1.00(정밀도 0.97). 한 장에 끊기던 판정은 30초 공백 허용 세션 + 1프레임 스무딩으로.
+- **1초 실화면 / 10초 추론 분리** — 카메라는 1초마다 keep-alive로 푸시(최신 프레임만 메모리), 서버는 10초에 한 장만 저장·추론. 하루 8,640장을 비용 0으로 판정.
+- **전원만 꽂으면 되는 카메라** — 아는 wifi 없으면 캡티브 포털, 서버 응답에 명령을 실어 돌려주는 피기백으로 wifi 등록·재시작 원격 제어, 하드웨어/소프트웨어 워치독.
+- **네트워크 경계** — 카메라 수신만 토큰 헤더로 공개, 로컬 LLM은 Cloudflare Tunnel + Access 서비스 토큰, 대시보드는 Access 로그인. 익산 PC는 SSH 대신 MQTT 에이전트로 제어(전원 OFF/ON·서비스 토글·N분 뒤 종료 예약/취소·GPU 지표 1분 단위 시계열).
+
+---
+
 ## Shared Packages
 
 | 패키지 | 설명 |
@@ -265,23 +300,21 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 | OS | Ubuntu 24.04 + K3s |
 | 원격 접속 | RustDesk |
 
-### K3s 서비스 현황
+### K3s 서비스 현황 (2026-11 기준)
 
 | 서비스 | 서브도메인 | 설명 |
 |--------|-----------|------|
 | FirstWing | `firstwing.doyosae.com` | 프로토타입 (Next.js) |
-| DevPulse Web | `devpulse.doyosae.com` | 뉴스 웹앱 (Next.js PWA) |
-| DevPulse API | `api-devpulse.doyosae.com` | 뉴스 API (NestJS GraphQL) |
-| 둥지 (FifthWing) | `dungji.doyosae.com` | 웹 3D 인테리어 룸플래너 (React Three Fiber) |
-| MinIO S3 | — (내부) | 오브젝트 스토리지 |
-| MinIO Console | — (내부) | 스토리지 관리 UI |
-| n8n | — (내부) | 자동화 워크플로우 |
+| DevPulse Web / API | `devpulse.doyosae.com` / `api-devpulse.doyosae.com` | 뉴스 웹앱 (Next.js PWA) / GraphQL API |
+| 둥지 Web / API | `dungji.doyosae.com` / `api-dungji.doyosae.com` | 웹 3D 룸플래너 / GraphQL API |
+| 도요몰 Web / API | `mall.doyosae.com` / `api-mall.doyosae.com` | 멀티 벤더 이커머스 / REST API |
+| GpuStation Web / API | `gpu.doyosae.com` / `api-gpu.doyosae.com` | 원격 GPU 대시보드 (Cloudflare Access) |
+| 집중 트래커 수신 | `focus-ingest.doyosae.com` | ESP32-CAM 프레임 수신 (토큰 인증, 추론 워커 동거) |
+| Mosquitto | `mqtt.doyosae.com` | MQTT 브로커 (TLS, 익산 ESP32·에이전트) |
+| MinIO S3 / Console | `s3.doyosae.com` / `s3-admin.doyosae.com` | 오브젝트 스토리지 (둥지 모델·썸네일, 도요몰 이미지) |
+| n8n | `n8n.doyosae.com` | 자동화 워크플로우 (DevPulse 수집) |
+| PostgreSQL | — (내부) | 앱 공용 데이터베이스 |
 | Portainer | — (내부) | 컨테이너 관리 |
-| PostgreSQL | — (내부) | 메인 데이터베이스 |
-| Redis | — (내부) | 캐시 / 큐 |
-| MongoDB | — (내부) | 문서 DB |
-| DrawDB | — (내부) | DB 스키마 설계 도구 |
-| Draw.io | — (내부) | 다이어그램 도구 |
 
 **네트워크**: Cloudflare Tunnel (포트포워딩 없이 HTTPS 외부 접속)
 **도메인**: `doyosae.com` (가비아 구매 → Cloudflare 이관)
@@ -304,7 +337,10 @@ DoyoWorld/
 │   ├── 04-02-ForthWind/       # 이커머스 API (NestJS + REST + Prisma)
 │   ├── 04-03-ForthWave/       # 이커머스 Mobile (Expo)
 │   ├── 05-01-FifthWing/       # 3D 룸플래너 "둥지" Web (Next.js + React Three Fiber)
-│   └── 05-02-FifthWind/       # 3D 룸플래너 API (NestJS + Prisma)
+│   ├── 05-02-FifthWind/       # 3D 룸플래너 API (NestJS + Prisma)
+│   ├── 06-01-GpuStationFrontend/  # 원격 GPU 대시보드 + 집중 시계판 (Next.js)
+│   ├── 06-02-GpuStationBackend/   # MQTT 중계 API + 익산 에이전트 (NestJS, Python)
+│   └── 06-03-FocusVisionBackend/  # 카메라 수신·로컬 VLM 추론·저장 + ESP32-CAM 펌웨어 (Python uv)
 ├── packages/
 │   ├── eslint-config/         # 공유 ESLint 설정
 │   ├── typescript-config/     # 공유 TypeScript 설정
@@ -330,6 +366,11 @@ pnpm --filter forth-wing dev     # 04 ForthWing (이커머스)
 pnpm --filter forth-wind dev     # 04 ForthWind (이커머스 API)
 pnpm --filter fifth-wing dev     # 05 FifthWing (둥지 3D 룸플래너)
 pnpm --filter fifth-wind dev     # 05 FifthWind (둥지 API)
+pnpm --filter gpustation-frontend dev  # 06 GpuStation 대시보드
+pnpm --filter gpustation-backend dev   # 06 GpuStation API
+
+# 06-03 FocusVisionBackend (Python, pnpm 밖)
+cd apps/06-03-FocusVisionBackend && uv sync && uv run pytest
 
 # 전체 빌드
 pnpm build
@@ -346,11 +387,12 @@ pnpm build
 | State | Zustand, React Query (TanStack), Apollo Client |
 | Backend | NestJS 11, GraphQL (Apollo Server), REST, Prisma 5 |
 | Auth | NextAuth v5, JWT, Passport.js, AWS SES |
-| Database | PostgreSQL 16, Redis 7, MongoDB |
+| Database | PostgreSQL 16, SQLite (집중 트래커 판정·GPU 지표) |
 | Storage | MinIO (S3 호환, Self-hosted) |
 | Mobile | Expo 54, React Native, WebView Bridge |
 | Infra | K3s, Docker, Cloudflare Tunnel, GitHub Actions |
-| AI/자동화 | Gemini AI, n8n 워크플로우 |
+| AI/자동화 | Gemini AI, n8n 워크플로우, Ollama Qwen2.5-VL(로컬 VLM), LangGraph, Claude Haiku(eval 베이스라인) |
+| IoT | ESP32-CAM(Arduino C++), ESP32 릴레이(Tasmota), MQTT(Mosquitto) |
 | CI/CD | GitHub Actions, Self-hosted Runner, GHCR |
 | Dev Tools | Turborepo, pnpm 9, RustDesk, Claude Code |
 
