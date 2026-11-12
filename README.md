@@ -40,7 +40,7 @@
 | 01 | [**FirstWing**](#01-firstwing--프로토타입) | 모노레포 구축 및 초기 PoC | 완료 |
 | 02 | [**DevPulse**](#02-devpulse--ai-기술-뉴스-플랫폼) | AI 기반 기술 뉴스 요약 플랫폼 (Web + API + Mobile) | 운영 중 |
 | 03 | [**ThirdWing**](#03-thirdwing--판금-업체-mvp) | 레이저 판금 업체 생산관리 MVP (Web + API) | 실험 |
-| 04 | [**ForthWing**](#04-forthwing--멀티-벤더-이커머스) | 멀티 벤더 이커머스 마켓플레이스 (Web + API + Mobile) | 개발 중 |
+| 04 | [**ForthWing**](#04-forthwing--멀티-벤더-이커머스) | 멀티 벤더 이커머스 마켓플레이스 (Web + API) | 운영 중(주문·결제 테스트모드) |
 | 05 | [**FifthWing**](#05-fifthwing--웹-3d-인테리어-룸플래너-둥지) | 웹 3D 인테리어 룸플래너 "둥지" (Web + API) | 운영 중 |
 | 06 | [**GpuStation · 집중 트래커**](#06-gpustation--집중-트래커) | 원격 GPU PC 제어·모니터링 대시보드 + ESP32-CAM·로컬 VLM 집중 모니터 (Web + API + Python) | 운영 중 |
 
@@ -107,13 +107,12 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 
 ## 04. ForthWing — 멀티 벤더 이커머스
 
-> 멀티 벤더 마켓플레이스 + 생산 관리 통합 엔터프라이즈 플랫폼
+> 멀티 벤더 마켓플레이스 — 주문·카카오페이(테스트) 결제까지 한 바퀴 · 🔗 [mall.doyosae.com](https://mall.doyosae.com)
 
 | App | 설명 | 기술 스택 |
 |-----|------|-----------|
 | [**ForthWing**](./apps/04-01-ForthWing) | 프론트엔드 (이커머스 웹) | Next.js 16, TailwindCSS, NextAuth, React Query, Zustand |
 | [**ForthWind**](./apps/04-02-ForthWind) | 백엔드 API | NestJS 11, Prisma, PostgreSQL, JWT, MinIO, AWS SES |
-| [**ForthWave**](./apps/04-03-ForthWave) | 모바일 앱 (예정) | Expo 54, React Native |
 
 ### 공개 페이지 (비회원)
 
@@ -194,9 +193,8 @@ Turborepo + pnpm 워크스페이스 기반 모노레포의 첫 번째 앱으로,
 |-------|------|------|
 | Phase 1 | 인증 (NextAuth JWT), 벤더 승인 가입 (AWS SES), 동적 메뉴 시스템 | 완료 |
 | Phase 2 | 카테고리 관리, 상품 CRUD, MinIO 이미지 업로드, 공개 페이지 (랜딩/목록/상세) | 완료 |
-| Phase 3 | 장바구니, 주문, 결제 (아임포트) | 예정 |
-| Phase 4 | 쿠폰, 포인트 시스템 | 예정 |
-| Phase 5+ | 리뷰/문의, FCM 알림, 정산, 생산 관리 | 예정 |
+| Phase 3 | 장바구니(벤더별 묶음), 배송지(우편번호 검색), 주문, 카카오페이 테스트 결제, 주문 내역/취소, 벤더 주문 관리 | 완료 |
+| Phase 4+ | 쿠폰, 포인트, 리뷰/문의, FCM 알림, 정산, 생산 관리 | 스코프 아웃 |
 
 ---
 
@@ -335,7 +333,6 @@ DoyoWorld/
 │   ├── 03-02-ThirdWind/       # 대시보드 API (NestJS + GraphQL)
 │   ├── 04-01-ForthWing/       # 이커머스 Web (Next.js 16 + TailAdmin)
 │   ├── 04-02-ForthWind/       # 이커머스 API (NestJS + REST + Prisma)
-│   ├── 04-03-ForthWave/       # 이커머스 Mobile (Expo)
 │   ├── 05-01-FifthWing/       # 3D 룸플래너 "둥지" Web (Next.js + React Three Fiber)
 │   ├── 05-02-FifthWind/       # 3D 룸플래너 API (NestJS + Prisma)
 │   ├── 06-01-GpuStationFrontend/  # 원격 GPU 대시보드 + 집중 시계판 (Next.js)
